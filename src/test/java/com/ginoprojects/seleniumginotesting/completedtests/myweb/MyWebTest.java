@@ -3,7 +3,6 @@ package com.ginoprojects.seleniumginotesting.completedtests.myweb;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -19,9 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class MyWebTest {
 
     private WebDriver webDriver;
-    private WebDriverWait wait;
 
-    public static final String MAXIMUM_WAIT_FOR_LOAD = "3000";
     public static final String GINOGALOTTI_URL = "http://ginogalotti.com";
 
     @BeforeClass public void setUp() {
@@ -30,22 +27,20 @@ public class MyWebTest {
 
         webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
-
     }
 
-    @Test public void testIfShootingPlayableScriptThroughXPath() throws InterruptedException {
+    @Test(groups = {"funcTesting"}) public void testIfShootingPlayableScriptThroughXPath()
+        throws InterruptedException {
         webDriver.get(GINOGALOTTI_URL);
         MyWebPage myPage = new MyWebPage(webDriver);
 
         myPage.goToShooterProjectByXpath();
-
         myPage.goToPlayableVersionByXpath();
 
         assertShooterPlayableVersion();
     }
 
-    @Test public void testIfShootingPlayableScriptThroughLinkText() {
+    @Test(groups = {"funcTesting"}) public void testIfShootingPlayableScriptThroughLinkText() {
         webDriver.get(GINOGALOTTI_URL);
         MyWebPage myPage = new MyWebPage(webDriver);
 
@@ -55,7 +50,7 @@ public class MyWebTest {
         assertShooterPlayableVersion();
     }
 
-    @Test public void testIfRoguelikePlayableScriptThroughLinkText() {
+    @Test(groups = {"funcTesting"}) public void testIfRoguelikePlayableScriptThroughLinkText() {
         webDriver.get(GINOGALOTTI_URL);
         MyWebPage myPage = new MyWebPage(webDriver);
 
@@ -73,8 +68,7 @@ public class MyWebTest {
         assertPlayableVersion();
     }
 
-    private void assertRoguelikePlayableVersion()
-    {
+    private void assertRoguelikePlayableVersion() {
         //Contains the header
         Assert.assertTrue(webDriver.getPageSource().contains("2DRoguelikeEnhanced"));
 
@@ -82,8 +76,7 @@ public class MyWebTest {
     }
 
 
-    private void assertPlayableVersion()
-    {
+    private void assertPlayableVersion() {
         //Contains the unity player
         Assert.assertTrue(webDriver.findElement(By.id("unityPlayer")) != null);
         Assert.assertTrue(webDriver.getPageSource().contains("Unity Web Player. Install now!"));

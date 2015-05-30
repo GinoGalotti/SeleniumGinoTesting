@@ -8,7 +8,6 @@ package com.ginoprojects.seleniumginotesting.workinprogress.googlepacman;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -18,9 +17,6 @@ import java.util.concurrent.TimeUnit;
 public class PacmanSeleniumTest {
 
     private WebDriver webDriver;
-    private WebDriverWait wait;
-
-    public static final String MAXIMUM_WAIT_FOR_LOAD = "3000";
 
     @BeforeClass
     public void setUp() {
@@ -32,7 +28,7 @@ public class PacmanSeleniumTest {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void testMethod() {
         webDriver.get("http://www.google.com/pacman");
 
@@ -49,7 +45,6 @@ public class PacmanSeleniumTest {
 
     @AfterClass
     public void restore() {
-        wait.withTimeout(5l, TimeUnit.SECONDS);
         webDriver.quit();
     }
 
