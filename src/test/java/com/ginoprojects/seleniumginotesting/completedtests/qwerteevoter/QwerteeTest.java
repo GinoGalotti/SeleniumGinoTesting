@@ -18,9 +18,9 @@ import java.util.concurrent.TimeUnit;
 public class QwerteeTest {
 
     //TODO User information... remember that you need to fill it!!
-    public static final String USER_EMAIL = "surthlover@gmail.com";
-    public static final String USER_PASSWORD = "dadapi1091";
-    public static final String USER_NAME = "Surth";
+    public static final String USER_EMAIL = "";
+    public static final String USER_PASSWORD = "";
+    public static final String USER_NAME = "";
 
     public static final String QWERTEE_URL = "https://www.qwertee.com/";
     public static final String QWERTEE_LOGOUT_URL = QWERTEE_URL + "/logout";
